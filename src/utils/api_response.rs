@@ -45,3 +45,32 @@ impl ResponseError for ApiResponse {
         HttpResponse::new(self.status_code()).set_body(body)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_api_response_creation() {
+        let response = ApiResponse::new(200, "Success".to_string());
+        assert_eq!(response.status_code, 200);
+        assert_eq!(response.body, "Success");
+    }
+
+    #[test]
+    fn test_api_response_status_codes() {
+        let response_400 = ApiResponse::new(400, "Bad Request".to_string());
+        assert_eq!(response_400.status_code, 400);
+        
+        let response_404 = ApiResponse::new(404, "Not Found".to_string());
+        assert_eq!(response_404.status_code, 404);
+    }
+
+    #[test]
+    fn test_api_response_display() {
+        let response = ApiResponse::new(404, "Resource not found".to_string());
+        let display_string = format!("{}", response);
+        assert!(display_string.contains("Error: Resource not found"));
+        assert!(display_string.contains("Status Code: 404"));
+    }
+}

@@ -31,9 +31,11 @@ async fn main() -> Result<(), error::ServiceError> {
 
     println!("Starting server on {}", address);
 
+    let app_state = web::Data::new(AppState { db });
+    
     HttpServer::new(move || {
         App::new()
-            .app_data(web::Data::new(AppState { db: db.clone() }))
+            .app_data(app_state.clone())
             .wrap(Logger::default())
             .configure(routes::user_routes::config)
             .configure(routes::auth_routes::config)

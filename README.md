@@ -43,6 +43,7 @@ sea-orm-cli generate entity \
 
 ## TODO
 
-- thread
-- sharedObject / Ownership
 - Stream
+- test file
+  - benchmark test
+- macro

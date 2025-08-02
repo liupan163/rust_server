@@ -134,3 +134,4 @@ pub async fn all_blocks(
 
     Ok(api_response::ApiResponse::new(200, resp_str.to_owned()))
 }
+

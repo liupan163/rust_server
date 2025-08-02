@@ -41,3 +41,4 @@ pub async fn login(
         format!("{{ 'token':'{}' }}", token),
     ))
 }
+

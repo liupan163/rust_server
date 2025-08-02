@@ -35,3 +35,4 @@ pub async fn check_auth_middleware(
         .await
         .map_err(|err| Error::from(api_response::ApiResponse::new(500, err.to_string())))
 }
+

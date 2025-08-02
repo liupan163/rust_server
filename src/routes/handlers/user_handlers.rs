@@ -112,3 +112,4 @@ pub async fn register(
         format!("{}", user_model.id),
     ))
 }
+
